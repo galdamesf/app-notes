@@ -1,15 +1,41 @@
-.note-container{
+.note-container {
     height: 100%;
 }
 
-.note-container h2{
+.note-container h2 {
     margin-bottom: 20px;
 }
 
-.note-container_notes{
+.note-container_notes {
     height: 90%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     overflow-y: scroll;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente si no hay notas */
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-style: italic;
+    width: 100%;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    color: #888;
 }

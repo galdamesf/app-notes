@@ -1,8 +1,13 @@
+:root {
+    --soft-top-gradient: linear-gradient(to top, #dfe9f3 0%, #e8f9f0 50%, white 100%);
+}
+
 .App{
     height: 100vh;
     display: flex;
     gap: 20px;
     padding: 40px;
+    background: var(--soft-top-gradient);
 }
 
 .custom-scroll::-webkit-scrollbar {

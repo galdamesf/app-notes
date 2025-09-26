@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {NoteContainer} from "./Components/NoteContainer/NoteContainer.jsx";
 import Sidebar from "./Components/Sidebar/Sidebar.jsx";
 import './App.css'
 
 function App() {
 
-    const [notes, setNotes] = useState ([]);
+    const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('app-notes')) || []);
 
     const addNote = (color) => {
         const tempNotes = [...notes];
@@ -24,14 +24,31 @@ function App() {
 
         const index = tempNotes.findIndex((item) => item.id === id);
         if(index < 0) return;
+
         tempNotes.splice(index, 1);
         setNotes(tempNotes);
+    };
+
+    const updateText = (text, id) => {
+        const tempNotes = [...notes];
+
+        const index = tempNotes.findIndex((item) => item.id === id);
+        if(index < 0) return;
+
+        tempNotes[index].text = text;
+        setNotes(tempNotes);
     }
+
+    useEffect(() => {
+        localStorage.setItem('app-notes', JSON.stringify(notes));
+    }, [notes]);
 
   return (
     <div className="App">
         <Sidebar addNote={addNote} />
-        <NoteContainer notes={notes} deleteNote={deleteNote} />
+        <NoteContainer notes={notes} deleteNote={deleteNote}
+        updateText={updateText}
+        />
     </div>
   );
 }
