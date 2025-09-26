@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import plusIcon from "../../Assets/plus.png";
 import "./Sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     const colors = ["#fe9b72", "#fec971", "#00d4fe", "#b693fd", "#e4ee91"]
     const [listOpen, setListOpen] = useState(false);
 
@@ -14,6 +14,7 @@ export default function Sidebar() {
                     key={index}
                     className="sidebar_list_item"
                     style={{backgroundColor: item}}
+                    onClick={() => props.addNote(item)}
                 />
             ))}
         </ul>

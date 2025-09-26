@@ -1,4 +1,5 @@
 import React from 'react';
+import deleteIcon from '../../assets/delete.png';
 import './Note.css';
 
 export default function Note(props) {
@@ -9,6 +10,9 @@ export default function Note(props) {
     }
     return <div className="note" style={{backgroundColor: note.color}}>
         <textarea className="note_text" defaultValue={note.text} />
-        <p>{note.time}</p>
+        <div className="note_footer">
+            <p>{note.time}</p>
+            <img src={deleteIcon} alt="DELETE" onClick={() => props.deleteNote(props.note.id)} />
+        </div>
     </div>
 }
